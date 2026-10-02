@@ -794,3 +794,120 @@ body,
   opacity: 1 !important;
 }
 
+/* Level 4 — Pizza */
+.pizza-screen {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(160deg, #5c3a21 0%, #3e2718 45%, #2a1a10 100%);
+  color: #f3e6d4;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  padding: 1.2vh 1.5vw 1.4vh;
+  gap: 0.75vh;
+  overflow: hidden;
+  user-select: none;
+}
+
+.pizza-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+}
+
+.pizza-tool {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.75rem;
+  border: none;
+  border-radius: 0.65rem;
+  background: linear-gradient(180deg, #a67c52 0%, #8b5e3c 55%, #6f4a2e 100%);
+  box-shadow: 0 3px 0 #3d2414;
+  color: #f3e6d4;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.pizza-tool.active {
+  outline: 2px solid #ffe8cc;
+  outline-offset: 2px;
+  transform: translateY(-2px);
+}
+
+.pizza-tool:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.pizza-tool-dot {
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25);
+}
+
+.pizza-stage {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pizza-canvas {
+  width: min(88vw, 520px);
+  height: auto;
+  max-height: 100%;
+  border-radius: 1rem;
+  touch-action: none;
+  cursor: crosshair;
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(0, 0, 0, 0.25);
+}
+
+/* Level 5 — House */
+.house-screen {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(160deg, #5c3a21 0%, #3e2718 45%, #2a1a10 100%);
+  color: #f3e6d4;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  padding: 1.2vh 1.5vw 1.4vh;
+  gap: 0.75vh;
+  overflow: hidden;
+  user-select: none;
+}
+
+.house-canvas {
+  width: min(92vw, 560px);
+  height: auto;
+  max-height: 100%;
+  border-radius: 1rem;
+  touch-action: none;
+  cursor: crosshair;
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(0, 0, 0, 0.25);
+}
+
+.house-hint {
+  margin: 0;
+  text-align: center;
+  color: #ffb3d1;
+  font-weight: 700;
+  font-size: 0.95rem;
+  min-height: 1.2em;
+}
+

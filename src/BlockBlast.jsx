@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import KeyboardObby from './KeyboardObby.jsx'
 import PaintChallenge from './PaintChallenge.jsx'
+import PizzaChallenge from './PizzaChallenge.jsx'
+import HouseChallenge from './HouseChallenge.jsx'
 
 const SIZE = 8
 const LEVEL_GOAL = 100
@@ -437,8 +439,28 @@ export default function BlockBlast({ onExit }) {
     return () => window.removeEventListener('keydown', onKey)
   }, [goNextLevel, level, levelUp, onExit, restart])
 
+  if (level >= 5) {
+    return <HouseChallenge onExit={onExit} score={score} />
+  }
+
+  if (level >= 4) {
+    return (
+      <PizzaChallenge
+        onExit={onExit}
+        score={score}
+        onComplete={() => setLevel(5)}
+      />
+    )
+  }
+
   if (level >= 3) {
-    return <PaintChallenge onExit={onExit} score={score} />
+    return (
+      <PaintChallenge
+        onExit={onExit}
+        score={score}
+        onComplete={() => setLevel(4)}
+      />
+    )
   }
 
   if (level >= 2) {
