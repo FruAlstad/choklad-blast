@@ -269,12 +269,16 @@ export default function PaintChallenge({ onExit, onComplete, score: carryScore =
           ))}
           <button
             type="button"
-            className={`paint-swatch paint-eraser${eraser ? ' active' : ''}`}
+            className={`paint-eraser${eraser ? ' active' : ''}`}
             disabled={done}
             title="Suddi"
+            aria-label="Suddi"
             onClick={() => setEraser(true)}
           >
-            Suddi
+            <span className="paint-eraser-body">
+              <span className="paint-eraser-pink" />
+              <span className="paint-eraser-blue" />
+            </span>
           </button>
         </div>
         <div className="paint-brushes">
