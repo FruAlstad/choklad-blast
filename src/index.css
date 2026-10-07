@@ -37,6 +37,28 @@ body,
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
 }
 
+.music-toggle {
+  position: fixed;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 100;
+  border: none;
+  border-radius: 0.65rem;
+  padding: 0.45rem 0.85rem;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #f3e6d4;
+  background: linear-gradient(180deg, #a67c52 0%, #8b5e3c 55%, #6f4a2e 100%);
+  box-shadow: 0 3px 0 #3d2414;
+  cursor: pointer;
+}
+
+.music-toggle.is-on {
+  outline: 2px solid #ffe8cc;
+  outline-offset: 2px;
+}
+
 .keyboard {
   width: 100%;
   flex: 1;
@@ -961,5 +983,251 @@ body,
   font-weight: 700;
   font-size: 0.95rem;
   min-height: 1.2em;
+}
+
+/* Level 6 — Cake shop */
+.shop-screen {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(160deg, #5c3a21 0%, #3e2718 45%, #2a1a10 100%);
+  color: #f3e6d4;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  padding: 1.2vh 1.5vw 1.4vh;
+  gap: 0.75vh;
+  overflow: hidden;
+  user-select: none;
+}
+
+.shop-layout {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(11rem, 16rem) 1fr;
+  gap: 0.9rem;
+}
+
+.shop-recipe {
+  background: rgba(42, 26, 16, 0.45);
+  border-radius: 1rem;
+  padding: 0.9rem 1rem;
+  overflow: auto;
+}
+
+.shop-recipe h2 {
+  margin: 0;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.shop-cake-name {
+  margin: 0.35rem 0 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ffb3d1;
+}
+
+.shop-recipe ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.shop-recipe li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.7;
+}
+
+.shop-recipe li.got {
+  opacity: 1;
+  color: #7ec8a3;
+  font-weight: 700;
+}
+
+.shop-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25);
+}
+
+.shop-carry {
+  margin-top: 1rem;
+  opacity: 0.7;
+  font-size: 0.85rem;
+}
+
+.shop-wrong {
+  margin-top: 0.4rem;
+  color: #ff8fb8;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.shop-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  min-height: 0;
+}
+
+.shop-aisle {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7.2rem, 1fr));
+  gap: 0.55rem;
+  align-content: start;
+  overflow: auto;
+  padding: 0.2rem;
+}
+
+.shop-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.85rem 0.5rem 0.7rem;
+  border: none;
+  border-radius: 0.85rem;
+  background: linear-gradient(180deg, #a67c52 0%, #8b5e3c 55%, #6f4a2e 100%);
+  box-shadow: 0 4px 0 #3d2414;
+  color: #f3e6d4;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.shop-item:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.shop-item.gubbe-here {
+  outline: 2px solid #ffe8cc;
+  outline-offset: 2px;
+}
+
+.shop-item-icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 0.55rem;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.shop-item-label {
+  font-size: 0.82rem;
+}
+
+.shop-gubbe {
+  position: absolute;
+  top: 0.25rem;
+  left: 0.35rem;
+  width: 1.1rem;
+  height: 1.55rem;
+}
+
+.shop-gubbe::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0.2rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: #f3c7a5;
+  box-shadow: 0 0 0 1px #3d2414;
+}
+
+.shop-gubbe::after {
+  content: '';
+  position: absolute;
+  top: 0.65rem;
+  left: 0.1rem;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 0.25rem;
+  background: #ff6b9d;
+  box-shadow: 0 0.55rem 0 -0.15rem #2a1a10;
+}
+
+.shop-message {
+  margin: 0;
+  text-align: center;
+  min-height: 1.2em;
+  color: #ffb3d1;
+  font-weight: 700;
+}
+
+.shop-cart {
+  background: rgba(42, 26, 16, 0.45);
+  border-radius: 1rem;
+  padding: 0.7rem 0.9rem;
+}
+
+.shop-cart h3 {
+  margin: 0 0 0.45rem;
+  font-size: 0.95rem;
+}
+
+.shop-cart-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  min-height: 2rem;
+}
+
+.shop-cart-empty {
+  opacity: 0.55;
+  font-size: 0.85rem;
+}
+
+.shop-cart-chip {
+  border: none;
+  border-radius: 999px;
+  padding: 0.3rem 0.7rem;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.shop-cart-chip.ok {
+  background: #4fa87c;
+  color: #fff8ef;
+}
+
+.shop-cart-chip.bad {
+  background: #d63384;
+  color: #fff8ef;
+}
+
+.shop-hint {
+  margin: 0;
+  text-align: center;
+  opacity: 0.7;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 700px) {
+  .shop-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .shop-recipe {
+    max-height: 28vh;
+  }
 }
 

@@ -3,6 +3,7 @@ import KeyboardObby from './KeyboardObby.jsx'
 import PaintChallenge from './PaintChallenge.jsx'
 import PizzaChallenge from './PizzaChallenge.jsx'
 import HouseChallenge from './HouseChallenge.jsx'
+import CakeShopChallenge from './CakeShopChallenge.jsx'
 
 const SIZE = 8
 const LEVEL_GOAL = 100
@@ -439,8 +440,18 @@ export default function BlockBlast({ onExit }) {
     return () => window.removeEventListener('keydown', onKey)
   }, [goNextLevel, level, levelUp, onExit, restart])
 
+  if (level >= 6) {
+    return <CakeShopChallenge onExit={onExit} score={score} />
+  }
+
   if (level >= 5) {
-    return <HouseChallenge onExit={onExit} score={score} />
+    return (
+      <HouseChallenge
+        onExit={onExit}
+        score={score}
+        onComplete={() => setLevel(6)}
+      />
+    )
   }
 
   if (level >= 4) {

@@ -177,7 +177,7 @@ function drawPiece(ctx, p, layout) {
   }
 }
 
-export default function HouseChallenge({ onExit, score: carryScore = 0 }) {
+export default function HouseChallenge({ onExit, onComplete, score: carryScore = 0 }) {
   const canvasRef = useRef(null)
   const endRef = useRef(null)
   const stateRef = useRef({
@@ -377,9 +377,18 @@ export default function HouseChallenge({ onExit, score: carryScore = 0 }) {
               {doorCount} dörr · {windowCount} fönster
             </p>
             <p className="paint-grade">Betyg: {grade} / 10</p>
-            <button type="button" className="bb-btn primary" onClick={onExit}>
-              Tillbaka till meny
+            <button
+              type="button"
+              className="bb-btn primary"
+              onClick={onComplete || onExit}
+            >
+              {onComplete ? 'Fortsätt till Level 6' : 'Tillbaka till meny'}
             </button>
+            {onComplete && (
+              <button type="button" className="bb-btn" onClick={onExit}>
+                Tillbaka till meny
+              </button>
+            )}
           </div>
         </div>
       )}

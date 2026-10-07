@@ -364,17 +364,25 @@ function App() {
   }, [])
 
   const startGame = useCallback(() => {
+    // Keep / start beat through the whole game, not just the lobby
+    ensureLobbyMusic()
     setPlaying(true)
-  }, [])
+  }, [ensureLobbyMusic])
 
   const exitGame = useCallback(() => {
     setPlaying(false)
-    // Keep beat going; restart if it was interrupted somehow
-    if (!lobbyRef.current && audioRef.current) {
-      lobbyRef.current = startLobbyMusic(audioRef.current)
-      setMusicOn(true)
+    ensureLobbyMusic()
+  }, [ensureLobbyMusic])
+
+  const toggleMusic = useCallback(() => {
+    if (lobbyRef.current) {
+      lobbyRef.current.stop()
+      lobbyRef.current = null
+      setMusicOn(false)
+      return
     }
-  }, [])
+    ensureLobbyMusic()
+  }, [ensureLobbyMusic])
 
   const pressKey = useCallback(
     (id, label, col, cols) => {
@@ -461,16 +469,33 @@ function App() {
     }
   }, [])
 
+  const musicButton = (
+    <button
+      type="button"
+      className={`music-toggle${musicOn ? ' is-on' : ''}`}
+      onClick={(e) => {
+        e.stopPropagation()
+        toggleMusic()
+      }}
+      title={musicOn ? 'Stäng av musik' : 'Sätt på musik'}
+    >
+      {musicOn ? 'Musik på' : 'Musik'}
+    </button>
+  )
+
   if (playing) {
-    return <BlockBlast onExit={exitGame} />
+    return (
+      <>
+        {musicButton}
+        <BlockBlast onExit={exitGame} />
+      </>
+    )
   }
 
   return (
     <div className="keyboard-bg">
-      <p className="keyboard-hint">
-        {musicOn ? 'Musik på · ' : ''}
-        Tryck på tangenterna · Space = Play
-      </p>
+      {musicButton}
+      <p className="keyboard-hint">Tryck på tangenterna · Space = Play</p>
       <div className="keyboard">
         {rows.map((row, i) => (
           <div className="keyboard-row" key={i}>
